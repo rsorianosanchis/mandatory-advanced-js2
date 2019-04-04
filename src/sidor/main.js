@@ -1,10 +1,14 @@
 import React,{Component} from 'react';
+import {MoviesList} from '../labbComponents/moviesList.js';
 
 export class Main extends Component {
   render(){
     console.log(this.props.movies);
     return(
-      <h1>Main sidan (tar bort)</h1>
+      <div className='col-12 col-md-8' >
+        <h4 className='text-center display-5'>Movies List</h4>
+        <MoviesList movies={this.props.movies}/>
+      </div>
     )
   }
 }
