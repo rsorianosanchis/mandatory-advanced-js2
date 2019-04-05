@@ -8,7 +8,14 @@ export class MoviesList extends Component {
     if (movies.length === 0 ) return null;
     console.log(movies);
     return(
-      <MovieItem />
+
+      <React.Fragment>
+
+        {movies.map(item=>(<MovieItem
+          key={item.id}
+          info={item}
+          />))}
+      </React.Fragment>
     )
   }
 
@@ -20,6 +27,7 @@ export class MoviesList extends Component {
             <th scope='col'>Filmtitel</th>
             <th scope='col'>Regissör</th>
             <th scope='col'>Betyg</th>
+            <th scope='col'>Användaråtgärder</th>
           </tr>
         </thead>
         <tbody>
