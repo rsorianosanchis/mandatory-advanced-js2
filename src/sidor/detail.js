@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 export class Detail extends Component {
   constructor(props){
@@ -28,17 +29,22 @@ export class Detail extends Component {
   render(){
     const {title,description,director,rating,id} = this.state.movie
     return(
-      <div className="card col-12 col-md-8">
-        <div className="card-header">
-          {title}
+      <>
+        <Helmet>
+          <title>Detail</title>
+        </Helmet>
+        <div className="card col-12 col-md-8">
+          <div className="card-header">
+            {title}
+          </div>
+          <div className="card-body">
+            <blockquote className="blockquote mb-0">
+              <p>{description}.<br/> <small>Värderas av allmänheten med en {rating}</small></p>
+              <footer className="blockquote-footer">Regisserad av <cite title="Source Title">{director}</cite></footer>
+            </blockquote>
+          </div>
         </div>
-        <div className="card-body">
-          <blockquote className="blockquote mb-0">
-            <p>{description}.<br/> <small>Värderas av allmänheten med en {rating}</small></p>
-            <footer className="blockquote-footer">Regisserad av <cite title="Source Title">{director}</cite></footer>
-          </blockquote>
-        </div>
-      </div>
+      </>
     )
   }
 }

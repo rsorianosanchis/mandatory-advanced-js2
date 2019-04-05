@@ -49,12 +49,13 @@ class App extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     //***nu vi pusha en ny render eftersom state length har ändrat efter delete eller efter add
     if(nextState.movies.length !== this.state.movies.length){
+      console.log('is true ny render');
       return true
     }else{
       return false
     }
   }
-  //
+
   render() {
     return (
       <div className="App">
@@ -71,8 +72,6 @@ class App extends Component {
               />
               <Route path ='/detail/:id' component={Detail}/>
               <Route path ='/add' render={()=>{return<Add updateList={this._updateList}/>}}/>
-
-
             </Switch>
             </div>
           </div>
