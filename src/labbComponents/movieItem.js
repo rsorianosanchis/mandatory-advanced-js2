@@ -5,8 +5,8 @@ import Emojify from 'react-emojione';
 export class MovieItem extends Component {
   state= {emoBetyg: <Emojify>:thinking:</Emojify>}
 
-  _emoBetyg ( ){
-    const betyg = this.props.info.rating;
+  _emoBetyg = (rating) => {
+    const betyg = rating;
     console.log(betyg);
       if(betyg<=2){
         this.setState({emoBetyg: <Emojify>:face_vomiting:</Emojify>})
@@ -17,12 +17,12 @@ export class MovieItem extends Component {
       }else if (betyg >7 && betyg<=9){
         this.setState({emoBetyg: <Emojify>:grinning:</Emojify>})
       }else if (betyg >= 10){
-        this.setState({emoBetyg: <Emojify>:clap::clap::clap:</Emojify>})
+        this.setState({emoBetyg: <Emojify>:clap::clap:</Emojify>})
       }
   }
 
   componentWillMount() {
-    this._emoBetyg();
+    this._emoBetyg(this.props.info.rating);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -35,14 +35,16 @@ export class MovieItem extends Component {
   }
 
   render(){
-    const {title,director,rating}= this.props.info;
+    const {title,director,rating,id}= this.props.info;
     return (
       <tr>
         <td>{title}</td>
         <td>{director}</td>
         <td>{rating} {this.state.emoBetyg}</td>
         <td>
-          <Link></Link>
+          <Link to={`/detail/${id}`} className='btn btn-primary btn-sm'>Se</Link>
+          <button type='button' className='btn btn-danger btn-sm'>Radera</button>
+
         </td>
 
       </tr>

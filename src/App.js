@@ -6,6 +6,7 @@ import axios from 'axios';
 import {Header} from './labbComponents/header.js';
 import {NavBar} from './labbComponents/navBar.js';
 import {Main} from './sidor/main.js';
+import {Detail} from './sidor/detail.js';
 //
 
 
@@ -37,6 +38,7 @@ class App extends Component {
             <NavBar/>
             <Switch>
               <Route exact path='/' render={()=>{return<Main movies={this.state.movies}/>}}/>
+              <Route path ='/detail/:id' component={Detail}/>
 
             </Switch>
             </div>
