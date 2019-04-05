@@ -3,7 +3,11 @@ import {Link} from 'react-router-dom';
 import Emojify from 'react-emojione';
 
 export class MovieItem extends Component {
-  state= {emoBetyg: <Emojify>:thinking:</Emojify>}
+  state= {
+    emoBetyg: <Emojify>:thinking:</Emojify>,
+
+
+  }
 
   _emoBetyg = (rating) => {
     const betyg = rating;
@@ -34,6 +38,7 @@ export class MovieItem extends Component {
     }
   }
 
+
   render(){
     const {title,director,rating,id}= this.props.info;
     return (
@@ -43,10 +48,8 @@ export class MovieItem extends Component {
         <td>{rating} {this.state.emoBetyg}</td>
         <td>
           <Link to={`/detail/${id}`} className='btn btn-primary btn-sm'>Se</Link>
-          <button type='button' className='btn btn-danger btn-sm'>Radera</button>
-
+          <button onClick={()=>this.props.clsMovieFnc(id)} type='button' className='btn btn-danger btn-sm'>Radera</button>
         </td>
-
       </tr>
     )
   }

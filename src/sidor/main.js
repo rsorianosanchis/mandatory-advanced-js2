@@ -7,7 +7,10 @@ export class Main extends Component {
     return(
       <div className='col-12 col-md-8' >
         <h4 className='text-center display-5'>Movies List</h4>
-        <MoviesList movies={this.props.movies}/>
+        <MoviesList
+          movies={this.props.movies}
+          clsMovieFnc={this.props.clsMovieFnc}
+        />
       </div>
     )
   }

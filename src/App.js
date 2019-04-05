@@ -13,7 +13,8 @@ import {Detail} from './sidor/detail.js';
 class App extends Component {
   //
   state = {
-    movies: []
+    movies: [],
+    moviesKontroll:[]
   }
   //
   componentDidMount() {
@@ -29,6 +30,27 @@ class App extends Component {
     })
   }
   //
+  _deleteMovie = (id) =>{
+    console.log(id);
+    axios.delete(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${id}`)
+    .then(response=>{
+      console.log(response);
+      if(response.status === 204){
+        //Här vi updatera movies array utan dleted item enligt id.
+        this.setState({movies: this.state.movies.filter(item => (item.id !== id))})
+      }
+    })
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    //nu vi pusha en ny render eftersom state har ändrat
+    if(nextState.movies.length !== this.state.movies.length){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //
   render() {
     return (
       <div className="App">
@@ -37,7 +59,12 @@ class App extends Component {
             <Header/>
             <NavBar/>
             <Switch>
-              <Route exact path='/' render={()=>{return<Main movies={this.state.movies}/>}}/>
+              <Route exact path='/' render={()=>{
+                  return<Main
+                    movies={this.state.movies}
+                    clsMovieFnc={this._deleteMovie}
+                    />}}
+              />
               <Route path ='/detail/:id' component={Detail}/>
 
             </Switch>
