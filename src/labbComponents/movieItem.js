@@ -12,15 +12,15 @@ export class MovieItem extends Component {
   _emoBetyg = (rating) => {
     const betyg = rating;
     console.log(betyg);
-      if(betyg<=2){
+      if(betyg<=1){
         this.setState({emoBetyg: <Emojify>:face_vomiting:</Emojify>})
-      }else if (betyg > 2 && betyg<=4){
+      }else if (betyg > 1 && betyg<=2){
         this.setState({emoBetyg: <Emojify>:nauseated_face:</Emojify>})
-      }else if (betyg >= 5 && betyg<=7){
+      }else if (betyg > 2 && betyg<=3){
         this.setState({emoBetyg: <Emojify>:face_with_raised_eyebrow:</Emojify>})
-      }else if (betyg >7 && betyg<=9){
+      }else if (betyg >3 && betyg<=4){
         this.setState({emoBetyg: <Emojify>:grinning:</Emojify>})
-      }else if (betyg >= 10){
+      }else if (betyg === 5){
         this.setState({emoBetyg: <Emojify>:clap::clap:</Emojify>})
       }
   }

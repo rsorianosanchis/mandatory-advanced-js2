@@ -7,6 +7,7 @@ import {Header} from './labbComponents/header.js';
 import {NavBar} from './labbComponents/navBar.js';
 import {Main} from './sidor/main.js';
 import {Detail} from './sidor/detail.js';
+import {Add} from './sidor/add.js';
 //
 
 
@@ -36,20 +37,23 @@ class App extends Component {
     .then(response=>{
       console.log(response);
       if(response.status === 204){
-        //Här vi updatera movies array utan dleted item enligt id.
+        //***Här vi updatera movies array utan dleted item enligt id.
         this.setState({movies: this.state.movies.filter(item => (item.id !== id))})
       }
     })
   }
+  //
+  _updateList=(nyObj)=>{
+    this.setState({movies: [...this.state.movies, nyObj]})
+  }
   shouldComponentUpdate(nextProps, nextState) {
-    //nu vi pusha en ny render eftersom state har ändrat
+    //***nu vi pusha en ny render eftersom state length har ändrat efter delete eller efter add
     if(nextState.movies.length !== this.state.movies.length){
       return true
     }else{
       return false
     }
   }
-
   //
   render() {
     return (
@@ -66,6 +70,8 @@ class App extends Component {
                     />}}
               />
               <Route path ='/detail/:id' component={Detail}/>
+              <Route path ='/add' render={()=>{return<Add updateList={this._updateList}/>}}/>
+
 
             </Switch>
             </div>
