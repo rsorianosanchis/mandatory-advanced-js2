@@ -40,7 +40,7 @@ export class MovieItem extends Component {
         <td>{rating} {this.state.emoBetyg}</td>
         <td>
           <Link to={`/detail/${id}`} className='btn btn-primary btn-sm'>Se</Link>
-          <ButtonEdit/>
+          <ButtonEdit id={id}/>
           <button onClick={()=>this.props.deleteMovieFnc(id)} type='button' className='btn btn-danger btn-sm'>Radera</button>
         </td>
       </tr>

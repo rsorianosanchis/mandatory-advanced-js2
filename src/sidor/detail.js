@@ -58,7 +58,7 @@ export class Detail extends Component {
             <blockquote className="blockquote mb-0">
               <p>{description}.<br/> <small>Värderas av allmänheten med en {rating}</small></p>
               <footer className="blockquote-footer">Regisserad av <cite title="Source Title">{director}</cite></footer>
-              <ButtonEdit/>
+              <ButtonEdit id={this.state.id}/>
             </blockquote>
           </div>
         </div>
