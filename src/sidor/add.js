@@ -29,7 +29,7 @@ export class Add extends Component {
       if(response.status === 201){
         console.log(response.statusText);
         this.setState({submitOk: true});
-        this.props.updateList(nyMovie);
+        //this.props.updateList(nyMovie);
       }
     })
   }
