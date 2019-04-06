@@ -54,11 +54,8 @@ export class Detail extends Component {
               <footer className="blockquote-footer">Regisserad av <cite title="Source Title">{director}</cite></footer>
               <ButtonEdit/>
             </blockquote>
-
           </div>
-
         </div>
-
       </React.Fragment>
     )
   }
