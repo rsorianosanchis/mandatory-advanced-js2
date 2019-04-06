@@ -11,7 +11,6 @@ export class MoviesList extends Component {
     return(
 
       <React.Fragment>
-
         {movies.map(item=>(<MovieItem
           key={item.id}
           info={item}

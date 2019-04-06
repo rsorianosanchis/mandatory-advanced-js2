@@ -20,7 +20,6 @@ export class Detail extends Component {
       console.log(response);
       console.log(response.data);
       this.setState({movie: response.data})
-      console.log(this.state.movie);
     })
   }
 
@@ -31,7 +30,7 @@ export class Detail extends Component {
 
   render(){
     console.log('render sidan Detail');
-    const {title,description,director,rating,id} = this.state.movie
+    const {title,description,director,rating} = this.state.movie
     return(
       <>
         <Helmet>

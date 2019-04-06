@@ -21,7 +21,7 @@ export class Add extends Component {
     nyMovie.description = this.state.inputDescription;
     nyMovie.director = this.state.inputDirector;
     nyMovie.rating = this.state.inputRating;
-    console.log(nyMovie);
+    //console.log(nyMovie);
     //
     axios.post(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies`,nyMovie)
     .then(response =>{
@@ -29,7 +29,6 @@ export class Add extends Component {
       if(response.status === 201){
         console.log(response.statusText);
         this.setState({submitOk: true});
-        //this.props.updateList(nyMovie);
       }
     })
   }
