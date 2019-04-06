@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom'
 
@@ -29,6 +30,12 @@ export class Add extends Component {
       if(response.status === 201){
         console.log(response.statusText);
         this.setState({submitOk: true});
+      }else{
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'objektet inte accepterats av servern',
+        })
       }
     })
   }
@@ -37,7 +44,7 @@ export class Add extends Component {
     console.log('render sidan Add');
     return(
       this.state.submitOk === false?
-      <>
+      <React.Fragment>
         <Helmet>
           <title>Add</title>
         </Helmet>
@@ -100,7 +107,7 @@ export class Add extends Component {
           </div>
           <button className='btn btn-primary'>Submit</button>
         </form>
-      </>
+      </React.Fragment>
     :<Redirect to='/'/>
     )
   }

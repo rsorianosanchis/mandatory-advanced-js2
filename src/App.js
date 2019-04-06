@@ -5,6 +5,7 @@ import {NavBar} from './labbComponents/navBar.js';
 import {Main} from './sidor/main.js';
 import {Detail} from './sidor/detail.js';
 import {Add} from './sidor/add.js';
+import {Edit} from './sidor/edit.js';
 //
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
               <Route exact path='/' component={Main}/>              />
               <Route path ='/detail/:id' component={Detail}/>
               <Route path ='/add' component={Add}/>
+              <Route path ='/edit' component={Edit}/>
             </Switch>
             </div>
           </div>

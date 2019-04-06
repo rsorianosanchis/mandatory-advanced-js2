@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import Emojify from 'react-emojione';
+import {ButtonEdit} from './buttonEdit.js';
 
 export class MovieItem extends Component {
   state= {
@@ -39,7 +40,8 @@ export class MovieItem extends Component {
         <td>{rating} {this.state.emoBetyg}</td>
         <td>
           <Link to={`/detail/${id}`} className='btn btn-primary btn-sm'>Se</Link>
-          <button onClick={()=>this.props.clsMovieFnc(id)} type='button' className='btn btn-danger btn-sm'>Radera</button>
+          <ButtonEdit/>
+          <button onClick={()=>this.props.deleteMovieFnc(id)} type='button' className='btn btn-danger btn-sm'>Radera</button>
         </td>
       </tr>
     )

@@ -14,7 +14,7 @@ export class MoviesList extends Component {
         {movies.map(item=>(<MovieItem
           key={item.id}
           info={item}
-          clsMovieFnc={this.props.clsMovieFnc}
+          deleteMovieFnc={this.props.deleteMovieFnc}
           />))}
       </React.Fragment>
     )

@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import {ButtonEdit} from '../labbComponents/buttonEdit.js';
 
 export class Detail extends Component {
   constructor(props){
@@ -17,8 +19,15 @@ export class Detail extends Component {
     axios.get(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${this.state.id}`)
     .then(response =>{
       console.log(response);
-      console.log(response.data);
-      this.setState({movie: response.data})
+      if(response.status=== 200){
+        this.setState({movie: response.data})
+      }else if(response.status=== 404){
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Filmen finns inte i server',
+        })
+      }
     })
   }
   //
@@ -43,9 +52,13 @@ export class Detail extends Component {
             <blockquote className="blockquote mb-0">
               <p>{description}.<br/> <small>Värderas av allmänheten med en {rating}</small></p>
               <footer className="blockquote-footer">Regisserad av <cite title="Source Title">{director}</cite></footer>
+              <ButtonEdit/>
             </blockquote>
+
           </div>
+
         </div>
+
       </React.Fragment>
     )
   }
