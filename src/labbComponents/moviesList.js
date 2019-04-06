@@ -20,7 +20,7 @@ export class MoviesList extends Component {
       </React.Fragment>
     )
   }
-
+  //
   render(){
     console.log('render MoviesList');
     return (

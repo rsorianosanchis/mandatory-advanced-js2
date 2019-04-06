@@ -3,9 +3,12 @@ import { Helmet } from 'react-helmet';
 import {MoviesList} from '../labbComponents/moviesList.js';
 
 export class Main extends Component {
+
   render(){
+    console.log(this.props.movies);
     console.log('render sidan Main');
     console.log(this.props.movies);
+
     return(
       <>
         <Helmet>
@@ -14,7 +17,7 @@ export class Main extends Component {
         <div className='col-12 col-md-8' >
           <h4 className='text-center display-5'>Movies List</h4>
           <MoviesList
-            movies={this.props.movies}
+            movies={this.props.movies} //GET MOVIES
             clsMovieFnc={this.props.clsMovieFnc}
           />
         </div>

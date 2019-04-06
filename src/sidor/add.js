@@ -28,18 +28,12 @@ export class Add extends Component {
       console.log(response);
       if(response.status === 201){
         console.log(response.statusText);
-        this.setState({submitOk: true})
+        this.setState({submitOk: true});
+        this.props.updateList(nyMovie);
       }
     })
-    this.props.updateList(nyMovie)
   }
-
-  componentDidCatch(error,info){
-    console.log('componentDidCatch i Add');
-    console.log(error);
-    console.log(info);
-  }
-
+  //
   render(){
     console.log('render sidan Add');
     return(

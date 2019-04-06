@@ -14,8 +14,7 @@ import {Add} from './sidor/add.js';
 class App extends Component {
   //
   state = {
-    movies: [],
-    moviesKontroll:[]
+    movies: []
   }
   //
   componentDidMount() {
@@ -46,16 +45,7 @@ class App extends Component {
   _updateList=(nyObj)=>{
     this.setState({movies: [...this.state.movies, nyObj]})
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    //***nu vi pusha en ny render eftersom state length har ändrat efter delete eller efter add
-    if(nextState.movies.length !== this.state.movies.length){
-      console.log('is true ny render');
-      return true
-    }else{
-      return false
-    }
-  }
-
+  //
   render() {
     return (
       <div className="App">

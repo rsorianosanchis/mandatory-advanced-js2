@@ -6,7 +6,7 @@ export class MovieItem extends Component {
   state= {
     emoBetyg: <Emojify>:thinking:</Emojify>,
   }
-
+  //
   _emoBetyg = (rating) => {
     console.log('_emoBetyg i MovieItem');
     const betyg = rating;
@@ -23,12 +23,12 @@ export class MovieItem extends Component {
         this.setState({emoBetyg: <Emojify>:star_struck:</Emojify>})
       }
   }
-
+  //
   componentWillMount() {
     console.log('componentWillMount i MovieItem');
     this._emoBetyg(this.props.info.rating);
   }
-
+  //
   shouldComponentUpdate(nextProps, nextState) {
     console.log('shouldComponentUpdate i MovieItem');
     if(this.props.info !== nextProps.info || this.state.emoBetyg !== nextState.emoBetyg){
@@ -38,8 +38,7 @@ export class MovieItem extends Component {
       return false
     }
   }
-
-
+  //
   render(){
     console.log('render MoviesList');
     const {title,director,rating,id}= this.props.info;
