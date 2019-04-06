@@ -9,8 +9,8 @@ export class Main extends Component {
     movies: []
   }
   //
-  //detta funkar bra eftersom bara rendera efter request
-  //om det finns ny elementer eller mindre i array
+  //bara rendera requesten om det finns
+  // ny elementer eller mindre i array
   componentDidMount() {
     this._getMovies();
   }

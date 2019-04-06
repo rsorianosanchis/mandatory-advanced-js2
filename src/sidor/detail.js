@@ -12,7 +12,6 @@ export class Detail extends Component {
       movie: [],
       id: props.match.params.id}
   }
-
   _getMovie (){
     console.log('_getMovie i Detail');
     axios.get(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${this.state.id}`)
@@ -22,17 +21,17 @@ export class Detail extends Component {
       this.setState({movie: response.data})
     })
   }
-
+  //
   componentDidMount() {
     console.log('componentDidMount sidan Detail');
     this._getMovie()
   }
-
+  //
   render(){
     console.log('render sidan Detail');
     const {title,description,director,rating} = this.state.movie
     return(
-      <>
+      <React.Fragment>
         <Helmet>
           <title>Detail</title>
         </Helmet>
@@ -47,7 +46,7 @@ export class Detail extends Component {
             </blockquote>
           </div>
         </div>
-      </>
+      </React.Fragment>
     )
   }
 }
