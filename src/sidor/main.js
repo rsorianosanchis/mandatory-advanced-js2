@@ -21,22 +21,14 @@ export class Main extends Component {
     .then(response =>{
       console.log(response);
       console.log(response.data);
-      if(response.status === 200){
-        this.setState({movies: response.data})
-        // Swal.fire({
-        //   position: 'top-end',
-        //   type: 'success',
-        //   title: 'Movies list imported',
-        //   showConfirmButton: false,
-        //   timer: 1500
-        // })
-      }else{
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        })
-      }
+      this.setState({movies: response.data})
+    })
+    .catch((error)=>{
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong with importing movies from server!',
+      })
     })
   }
   //
@@ -55,16 +47,14 @@ export class Main extends Component {
         axios.delete(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${id}`)
         .then(response=>{
           console.log(response);
-          if(response.status === 204){
-            //***Här vi updatera movies array utom den deleted item enligt id.
-            this.setState({movies: this.state.movies.filter(item => (item.id !== id))})
-          }else{
-            Swal.fire({
-              type: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong with importing movies from server!',
-            })
-          }
+          //***Här vi updatera movies array utom den deleted item enligt id.
+          this.setState({movies: this.state.movies.filter(item => (item.id !== id))})
+        }).catch(error=>{
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong with delete movie!',
+          })
         })
         Swal.fire(
           'Deleted!',

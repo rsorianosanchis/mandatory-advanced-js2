@@ -22,21 +22,21 @@ export class Add extends Component {
     nyMovie.description = this.state.inputDescription;
     nyMovie.director = this.state.inputDirector;
     nyMovie.rating = this.state.inputRating;
-    //console.log(nyMovie);
+    console.log(nyMovie);
     //
     axios.post(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies`,nyMovie)
     .then(response =>{
-      console.log(response);
-      if(response.status === 201){
-        console.log(response.statusText);
-        this.setState({submitOk: true});
-      }else{
-        Swal.fire({
-          type: 'error',
-          title: 'Oops...',
-          text: 'objektet inte accepterats av servern',
-        })
-      }
+      console.log(response.status);
+      console.log(response.statusText);
+      this.setState({submitOk: true});
+    })
+    .catch((error)=>{
+      console.log(error);
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'objektet inte accepterats av servern',
+      })
     })
   }
   //
@@ -85,7 +85,7 @@ export class Add extends Component {
               step='0.1'
               pattern= '[0-9]'
               min= '0.0'
-              max= '5.0'
+              /*max= '5.0'*/
               className='form-control'
               placeholder='Skriv ett nummer mellan 0.0 till 5.0'
               ref={inputElement => this.field_3 = inputElement}

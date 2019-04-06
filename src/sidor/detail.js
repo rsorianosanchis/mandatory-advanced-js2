@@ -28,6 +28,12 @@ export class Detail extends Component {
           text: 'Filmen finns inte i server',
         })
       }
+    }).catch(error=>{
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Filmen finns inte i server or somthing went wrong',
+      })
     })
   }
   //
