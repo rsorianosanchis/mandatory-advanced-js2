@@ -4,6 +4,7 @@ import {MoviesList} from '../labbComponents/moviesList.js';
 
 export class Main extends Component {
   render(){
+    console.log('render sidan Main');
     console.log(this.props.movies);
     return(
       <>

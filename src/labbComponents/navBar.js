@@ -4,6 +4,7 @@ import {ButtonHome} from './buttonHome.js';
 import './navBar.css';
 
 export const NavBar = ()=>{
+  console.log('render NavBar comp');
   return(
     <nav className='col-8 col-md-8'>
       <ButtonHome/>

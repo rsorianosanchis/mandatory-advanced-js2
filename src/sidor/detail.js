@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 export class Detail extends Component {
   constructor(props){
+    console.log('constructor i Detail');
     super(props)
     console.log(props);
     console.log(props.match.params.id);
@@ -13,6 +14,7 @@ export class Detail extends Component {
   }
 
   _getMovie (){
+    console.log('_getMovie i Detail');
     axios.get(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${this.state.id}`)
     .then(response =>{
       console.log(response);
@@ -23,10 +25,12 @@ export class Detail extends Component {
   }
 
   componentDidMount() {
+    console.log('componentDidMount sidan Detail');
     this._getMovie()
   }
 
   render(){
+    console.log('render sidan Detail');
     const {title,description,director,rating,id} = this.state.movie
     return(
       <>

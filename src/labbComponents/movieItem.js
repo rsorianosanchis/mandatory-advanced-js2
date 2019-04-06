@@ -5,11 +5,10 @@ import Emojify from 'react-emojione';
 export class MovieItem extends Component {
   state= {
     emoBetyg: <Emojify>:thinking:</Emojify>,
-
-
   }
 
   _emoBetyg = (rating) => {
+    console.log('_emoBetyg i MovieItem');
     const betyg = rating;
     console.log(betyg);
       if(betyg<=1){
@@ -18,18 +17,20 @@ export class MovieItem extends Component {
         this.setState({emoBetyg: <Emojify>:nauseated_face:</Emojify>})
       }else if (betyg > 2 && betyg<=3){
         this.setState({emoBetyg: <Emojify>:face_with_raised_eyebrow:</Emojify>})
-      }else if (betyg >3 && betyg<=4){
+      }else if (betyg >3 && betyg < 5){
         this.setState({emoBetyg: <Emojify>:grinning:</Emojify>})
-      }else if (betyg === 5){
-        this.setState({emoBetyg: <Emojify>:clap::clap:</Emojify>})
+      }else{
+        this.setState({emoBetyg: <Emojify>:star_struck:</Emojify>})
       }
   }
 
   componentWillMount() {
+    console.log('componentWillMount i MovieItem');
     this._emoBetyg(this.props.info.rating);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate i MovieItem');
     if(this.props.info !== nextProps.info || this.state.emoBetyg !== nextState.emoBetyg){
       this._emoBetyg();
       return true;
@@ -40,6 +41,7 @@ export class MovieItem extends Component {
 
 
   render(){
+    console.log('render MoviesList');
     const {title,director,rating,id}= this.props.info;
     return (
       <tr>

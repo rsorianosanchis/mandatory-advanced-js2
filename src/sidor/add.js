@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import { Redirect } from 'react-router-dom'
 
 export class Add extends Component {
   state = {
@@ -8,10 +9,12 @@ export class Add extends Component {
     inputDescription:'',
     inputDirector:'',
     inputRating: 0,
+    usrRandom: '',
     submitOk: false
   }
   //
   _postNyMovie=(e)=>{
+    console.log('_postNyMovie i Add');
     e.preventDefault();
     let nyMovie = {};
     nyMovie.title = this.state.inputTitle;
@@ -31,20 +34,16 @@ export class Add extends Component {
     this.props.updateList(nyMovie)
   }
 
-  // componentWillUnmount=() =>{
-  //   this.field_form.removeEventListener('onSubmit',this.function);
-  //   this.field_1.removeEventListener('onChange',this.function);
-  //   this.field_2.removeEventListener('onChange',this.function);
-  //   this.field_3.removeEventListener('onChange',this.function);
-  //   this.field_4.removeEventListener('onChange',this.function);
-  // }
   componentDidCatch(error,info){
+    console.log('componentDidCatch i Add');
     console.log(error);
     console.log(info);
   }
 
   render(){
+    console.log('render sidan Add');
     return(
+      this.state.submitOk === false?
       <>
         <Helmet>
           <title>Add</title>
@@ -109,6 +108,7 @@ export class Add extends Component {
           <button className='btn btn-primary'>Submit</button>
         </form>
       </>
+    :<Redirect to='/'/>
     )
   }
 }

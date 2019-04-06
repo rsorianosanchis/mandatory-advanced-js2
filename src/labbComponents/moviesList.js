@@ -4,6 +4,7 @@ import {MovieItem} from './movieItem';
 export class MoviesList extends Component {
 
   _renderaList = ()=>{
+    console.log('_renderaList i MoviesList');
     const movies= this.props.movies;
     if (movies.length === 0 ) return null;
     console.log(movies);
@@ -21,6 +22,7 @@ export class MoviesList extends Component {
   }
 
   render(){
+    console.log('render MoviesList');
     return (
       <table className='table'>
         <thead>
