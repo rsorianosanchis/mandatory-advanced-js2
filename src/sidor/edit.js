@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Redirect } from 'react-router-dom';
-
+//
 export class Edit extends Component {
   constructor(props){
     super(props)
@@ -25,9 +25,8 @@ export class Edit extends Component {
     console.log();
     console.log('request movie for updatera innan render ');
     this._getMovie();
-
   }
-
+  //
   _getMovie = ()=>{
     console.log('_getMovie i Detail');
     axios.get(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${this.state.id}`)
@@ -61,7 +60,7 @@ export class Edit extends Component {
     updateMovie.rating = this.field_3.value;
     console.log(updateMovie);
     //
-    debugger;
+    //debugger;
     axios.put(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies/${this.state.id}`,updateMovie)
     .then(response =>{
       console.log(response.status);
@@ -79,9 +78,10 @@ export class Edit extends Component {
   }
   //
   render(){
-    const test = this.state.upData;
+    const originalData = this.state.upData;
     console.log('render sidan Edit');
-    console.log(this.state.upData);
+    console.log(originalData);
+    console.log(typeof(originalData.description));
     return(
       this.state.submitOk === false?
       <React.Fragment>
@@ -101,7 +101,7 @@ export class Edit extends Component {
               minLength='1'
               maxLength='40'
               className='form-control'
-              defaultValue= {test.title}
+              defaultValue= {originalData.title}
               ref={inputElement => this.field_1 = inputElement}
                />
           </div>
@@ -112,7 +112,7 @@ export class Edit extends Component {
               minLength='1'
               maxLength='40'
               className='form-control'
-              defaultValue= {test.director}
+              defaultValue= {originalData.director}
               ref={inputElement => this.field_2 = inputElement}
                />
           </div>
@@ -125,23 +125,23 @@ export class Edit extends Component {
               min= '0.0'
               /*max= '5.0'*/
               className='form-control'
-              defaultValue= {test.rating}
+              defaultValue= {originalData.rating}
               ref={inputElement => this.field_3 = inputElement}
                />
           </div>
           <div className='form-group'>
             <label>Films beskrivning</label>
-            <textarea
+            <input
               type='textarea'
+              rows= {10}
               minLength='1'
               maxLength='300'
               className='form-control'
-              defaultValue= {test.description}
+              defaultValue={originalData.description}
               ref={inputElement => this.field_4 = inputElement}
-              >
-            </textarea>
+              />
           </div>
-          <button className='btn btn-primary'>Submit</button>
+          <button className='btn btn-primary'>Updatera</button>
         </form>
       </React.Fragment>
     :<Redirect to='/'/>
