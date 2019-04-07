@@ -15,18 +15,11 @@ export class Main extends Component {
     movieForSearch: ''
   }
   //
-  //bara rendera requesten om det finns
-  // ny elementer eller mindre i array
   componentDidMount() {
     //
     this._getMovies();
     //
   }
-  shouldComponentUpdate(nextProps, nextState) {
-
-    return true
-  }
-
   //
   _getMovies (){
     axios.get(`http://ec2-13-53-132-57.eu-north-1.compute.amazonaws.com:3000/movies`)
@@ -97,20 +90,20 @@ export class Main extends Component {
 
     if(strForSearch.length !== 0){
       filterResult = cpMovies.filter(movie=>(movie.title.toLowerCase().indexOf(word.toLowerCase()) !== -1)
-      ||(movie.director.toLowerCase().indexOf(word.toLowerCase()) !== -1)) 
-
+      ||(movie.director.toLowerCase().indexOf(word.toLowerCase()) !== -1))
     }else{
       filterResult = cpMovies;
     }
-
-
     return(
       <React.Fragment>
         <Helmet>
           <title>Home</title>
         </Helmet>
         <div className='col-12 col-md-8' >
-          <h4 className='text-center display-5'>Movies List</h4>
+          <p
+            style={{fontSize: 40}}
+            className='text-center display-4'
+            >Movies List</p>
           <Search writtenWord= {this._searchMovie}/>
           <MoviesList
             movies={filterResult}
